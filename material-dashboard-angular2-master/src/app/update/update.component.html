@@ -4,7 +4,7 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header card-header-danger">
-                        <h4 class="card-title">Ajouter un matériel informatique</h4>
+                        <h4 class="card-title">modifier le matériel informatique</h4>
                     </div>
                     <div class="card-body">
                         <form [formGroup]="fournitureForm" (ngSubmit)="onSubmit()">
@@ -36,7 +36,7 @@
                                 </div>
                             </div>
                            
-                            <button type="submit" class="btn btn-danger pull-right" [disabled]="fournitureForm.invalid">Ajoutez !</button>
+                            <button type="submit" class="btn btn-danger pull-right" [disabled]="fournitureForm.invalid">modifier</button>
                         </form>
                     </div>
                 </div>
