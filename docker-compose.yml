@@ -1,0 +1,90 @@
+version: '3.8'
+
+services:
+  eureka-server:
+    build: ./EurekaServerApplication
+    container_name: eureka-server
+    ports:
+      - "8761:8761"
+    networks:
+      - spring-cloud-network
+
+  materielinformatique:
+    build: ./MaterielInformatique
+    container_name: materielinformatique
+    ports:
+      - "8083:8083"
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
+      - SPRING_DATASOURCE_URL=jdbc:mysql://database:3306/stage
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=rootpassword
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+      - SPRING_JPA_SHOW_SQL=true
+    depends_on:
+      - eureka-server
+      - database
+    networks:
+      - spring-cloud-network
+
+  stagefourniture:
+    build: ./StageFourniture
+    container_name: stagefourniture
+    ports:
+      - "8081:8081"
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
+      - SPRING_DATASOURCE_URL=jdbc:mysql://database:3306/stage
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=rootpassword
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+      - SPRING_JPA_SHOW_SQL=true
+    depends_on:
+      - eureka-server
+      - database
+    networks:
+      - spring-cloud-network
+  stageeuser:
+    build: ./stageeuser
+    container_name: stageeuser
+    ports:
+      - "8084:8084"
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
+      - SPRING_DATASOURCE_URL=jdbc:mysql://database:3306/stage
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=rootpassword
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+      - SPRING_JPA_SHOW_SQL=true
+    depends_on:
+      - eureka-server
+      - database
+    networks:
+      - spring-cloud-network
+
+  gateway:
+    build: ./gateaway
+    container_name: gateway
+    ports:
+      - "8089:8089"
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
+    depends_on:
+      - eureka-server
+    networks:
+      - spring-cloud-network
+
+  database:
+    image: mysql:8.0
+    container_name: database
+    ports:
+      - "3307:3306"
+    environment:
+      - MYSQL_DATABASE=stage
+      - MYSQL_ROOT_PASSWORD=rootpassword
+    networks:
+      - spring-cloud-network
+
+networks:
+  spring-cloud-network:
+    driver: bridge
