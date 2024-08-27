@@ -1,0 +1,46 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title">Ajouter un matériel informatique</h4>
+                    </div>
+                    <div class="card-body">
+                        <form [formGroup]="fournitureForm" (ngSubmit)="onSubmit()">
+                      
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <select id="typeMateriel" formControlName="typeMateriel" class="form-control">
+                                            <option value="" disabled>Sélectionnez un type de matériel</option>
+                                            <option *ngFor="let type of typemateriels" [value]="type.type">{{ type.type }}</option>
+                                        </select>
+                                        <mat-error *ngIf="fournitureForm.get('typeMateriel').invalid && (fournitureForm.get('typeMateriel').dirty || fournitureForm.get('typeMateriel').touched)">
+                                            <span *ngIf="fournitureForm.get('typeMateriel').errors.required">Le type de matériel est requis.</span>
+                                        </mat-error>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <select id="situation" formControlName="situation" class="form-control">
+                                            <option value="" disabled>Sélectionnez une situation</option>
+                                            <option *ngFor="let situation of situations" [value]="situation.situation">{{ situation.situation }}</option>
+                                        </select>
+                                        <mat-error *ngIf="fournitureForm.get('situation').invalid && (fournitureForm.get('situation').dirty || fournitureForm.get('situation').touched)">
+                                            <span *ngIf="fournitureForm.get('situation').errors.required">La situation est requise.</span>
+                                        </mat-error>
+                                    </div>
+                                </div>
+                            </div>
+                           
+                            <button type="submit" class="btn btn-danger pull-right" [disabled]="fournitureForm.invalid">Ajoutez !</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,157 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6 col-md-12">
+                <div class="card card-stats">
+                    <div class="card-header card-header-warning card-header-icon">
+                        <div class="card-icon">
+                            <i class="material-icons">content_copy</i>
+                        </div>
+                        <p class="card-category">Nombre de materiel</p>
+                        <h3 class="card-title">{{ materielCount }}
+                            <small></small>
+                        </h3>
+                    </div>
+                    <div class="card-footer">
+                        <div class="stats">
+                            <i class="material-icons text-danger">warning</i>
+                            <a href="javascript:void(0)">Get More Space...</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12">
+                <div class="card card-stats">
+                    <div class="card-header card-header-success card-header-icon">
+                        <div class="card-icon">
+                            <i class="material-icons">store</i>
+                        </div>
+                        <p class="card-category">Les dépenses</p>
+                        <h3 class="card-title">{{materielCountt}}</h3>
+                    </div>
+                    <div class="card-footer">
+                        <div class="stats">
+                            <i class="material-icons">date_range</i> Last 24 Hours
+                        </div>
+                    </div>
+                </div>
+            </div>
+       
+        </div>
+        
+        <div class="row">
+            
+            <div class="col-lg-6 col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-warning-1">
+                        <h4 class="card-title">La quantité des matériaux par situation</h4>
+                        <p class="card-category"></p>
+                    </div>
+                    <div class="card-body table-responsive">
+                        <table class="table table-hover">
+                            <thead class="text-warning">
+                                <th> Situation</th>
+                                <th> 
+                                    quantiteTotale</th>
+                              
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let user of inventaireParSituation">
+                                    <td>{{ user.situation }}</td>
+                                    <td>{{ user.quantiteTotale }}</td>
+                                 
+                                </tr>
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12">
+
+                <div class="card">
+                    <div class="card-header card-header-info-4 ">
+                        <h4 class="card-title">La quantité des matériaux par type de matériel</h4>
+                        <p class="card-category"></p>
+                    </div>
+                    <div class="card-body table-responsive">
+                        <table class="table table-hover">
+                            <thead class="text-warning">
+                                <th> Type de materiel</th>
+                                <th> 
+                                    quantiteTotale</th>
+                              
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let user of inventaireParTypeMateriel">
+                                    <td>{{ user.typeMateriel }}</td>
+                                    <td>{{ user.quantiteTotale }}</td>
+                                 
+                                </tr>
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12">
+
+                <div class="card">
+                    <div class="card-header card-header-success-2">
+                       <h4 class="card-title">La quantité des matériaux par modèle</h4>
+                        <p class="card-category"></p>
+                    </div>
+                    <div class="card-body table-responsive">
+                        <table class="table table-hover">
+                            <thead class="text-warning">
+                                <th> modèle</th>
+                                <th> 
+                                    quantiteTotale</th>
+                              
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let user of inventaireParModel">
+                                   
+                                    <td>{{ user.model }}</td>
+                                    <td>{{ user.quantiteTotale }}</td>
+                                 
+                                </tr>
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12">
+
+                <div class="card">
+                    <div class="card-header card-header-danger-3 ">
+                        <h4 class="card-title">La quantité des matériaux par forme d'achat</h4>
+                        <p class="card-category"></p>
+                    </div>
+                    <div class="card-body table-responsive">
+                        <table class="table table-hover">
+                            <thead class="text-warning">
+                                <th> type</th>
+                                <th> 
+                                    totalFournitures</th>
+                              
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let user of inventaireParFormeAchat">
+                                   
+                                    <td>{{ user.type }}</td>
+                                    <td>{{ user.totalFournitures }}</td>
+                                 
+                                </tr>
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+  </div>
+  

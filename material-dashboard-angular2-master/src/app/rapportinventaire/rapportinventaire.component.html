@@ -1,0 +1,41 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-plain">
+                    <div class="card-header card-header-danger d-flex justify-content-between align-items-center">
+                        <h4 class="card-title mt-0">Liste des matériels informatiques</h4>
+                        <button class="btn btn-primary" [routerLink]="['/ajoutmat']">Ajouter matériel informatique</button>
+                    </div>
+                    <div class="card-body">
+                        <div *ngFor="let year of groupedMateriels | keyvalue">
+                            <h4>Année : {{ year.key }}</h4> <!-- Affiche l'année -->
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Code</th>
+                                            <th>Modèle</th>
+                                            <th>Type de Matériel</th>
+                                            <th>Situation</th>
+                                            <th>Date d'Ajout</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let materiel of year.value">
+                                            <td>{{ materiel.code }}</td>
+                                            <td>{{ materiel.model }}</td>
+                                            <td>{{ materiel.typeMateriel?.type || 'N/A' }}</td>
+                                            <td>{{ materiel.situation?.situation || 'N/A' }}</td>
+                                            <td>{{ formatDate(materiel.dateAjout) }}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

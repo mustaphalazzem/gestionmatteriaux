@@ -1,0 +1,70 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title">Ajouter le fourniture</h4>
+                    </div>
+                    <div class="card-body">
+                        <form [formGroup]="fournitureForm" (ngSubmit)="onSubmit()">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <input id="nom" placeholder="Nom" formControlName="nom" class="form-control">
+                                        <div *ngIf="fournitureForm.get('nom').invalid && (fournitureForm.get('nom').dirty || fournitureForm.get('nom').touched)">
+                                            <small class="text-danger" *ngIf="fournitureForm.get('nom').errors.required">Le nom est requis.</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <input id="description" placeholder="Description" formControlName="description" class="form-control" type="text">
+                                        <div *ngIf="fournitureForm.get('description').invalid && (fournitureForm.get('description').dirty || fournitureForm.get('description').touched)">
+                                            <small class="text-danger" *ngIf="fournitureForm.get('description').errors.required">La description est requise.</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <select id="formeAchat" formControlName="formeAchat" class="form-control">
+                                            <option value="">Sélectionner une forme d'achat</option>
+                                            <option *ngFor="let formeAchat of formesAchat" [value]="formeAchat.type">{{ formeAchat.type }}</option>
+                                        </select>
+                                        <div *ngIf="fournitureForm.get('formeAchat').invalid && (fournitureForm.get('formeAchat').dirty || fournitureForm.get('formeAchat').touched)">
+                                            <small class="text-danger" *ngIf="fournitureForm.get('formeAchat').errors.required">La forme d'achat est requise.</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input id="dateAchat" type="date" formControlName="dateAchat" class="form-control">
+                                        <div *ngIf="fournitureForm.get('dateAchat').invalid && (fournitureForm.get('dateAchat').dirty || fournitureForm.get('dateAchat').touched)">
+                                            <small class="text-danger" *ngIf="fournitureForm.get('dateAchat').errors.required">La date d'achat est requise.</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input id="prix" placeholder="Prix" formControlName="prix" class="form-control" type="number">
+                                        <div *ngIf="fournitureForm.get('prix').invalid && (fournitureForm.get('prix').dirty || fournitureForm.get('prix').touched)">
+                                            <small class="text-danger" *ngIf="fournitureForm.get('prix').errors.required">Le prix est requis.</small>
+                                            <small class="text-danger" *ngIf="fournitureForm.get('prix').errors.min">Le prix doit être supérieur ou égal à 0.</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-danger pull-right" [disabled]="fournitureForm.invalid">Ajoutez !</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

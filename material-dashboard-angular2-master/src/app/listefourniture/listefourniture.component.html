@@ -1,0 +1,52 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-plain">
+                    <div class="card-header card-header-danger d-flex justify-content-between align-items-center">
+                        <h4 class="card-title mt-0">Liste fourniture</h4>
+                        <!-- <input type="text" class="form-control w-25 search-input" placeholder="Rechercher..." [(ngModel)]="searchTerm"> -->
+                        <button class="btn btn-primary" [routerLink]="['/ajouterf']">Ajouter fourniture</button>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <input type="text" class="form-control  search-input" placeholder="Rechercher..." [(ngModel)]="searchTerm">
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead class="">
+                                    <tr>
+                                        <th>Num facture</th>
+                                        <th>Nom</th>
+                                        <th>Prix</th>
+                                        <th>Type</th>
+                                        <th>Date Achat</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let maison of filteredFournitures">
+                                        <td>{{ maison?.numFacture }}</td>
+                                        <td>{{ maison?.nom }}</td>
+                                        <td>{{ maison?.prix }}</td>
+                                        <td>{{ maison?.formeAchat?.type }}</td>
+                                        <td>{{ maison?.dateAchat | date: 'yyyy-MM-dd' }}</td>
+                                        <td>
+                                            <button (click)="removeMaison(maison?.numFacture)" class="btn btn-danger btn-sm" style="margin-left: 10px">Delete</button>
+                                            <button class="btn btn-secondary btn-sm" style="margin-left: 10px" (click)="maisonDetails(maison?.numFacture)">View</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <mat-paginator [length]="filteredFournitures.length"
+                                       [pageSize]="pageSize"
+                                       [pageSizeOptions]="[5, 10, 20]"
+                                       (page)="onPageChange($event)">
+                        </mat-paginator>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,55 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title">Detail de matieriel informatique</h4>
+
+                    </div>
+                    <div class="card-body">
+                        <form>
+                            <div class="row">
+
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="example-full-width">
+                                        <h5 class="card-title">code</h5>
+                                        <p class="card-text">{{maison.code}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="example-full-width">
+                                        <h5 class="card-title">model</h5>
+                                        <p class="card-text">{{maison.model}}</p>
+                                    </div>
+                                </div>
+                                </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="example-full-width">
+                                        <h5 class="card-title">type d'achat</h5>
+                                        <p class="card-text">{{maison.typeMateriel.type || "N/A"}}</p>
+                                    </div>
+                                </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="example-full-width">
+                                            <h5 class="card-title">situation</h5>
+                                            <p class="card-text">{{maison.situation.situation|| "N/A" }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
