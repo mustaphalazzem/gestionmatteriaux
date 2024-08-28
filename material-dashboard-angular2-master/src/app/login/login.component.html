@@ -1,18 +1,20 @@
 <div class="main-content">
     <div class="container-fluid">
         <div class="row justify-content-center">
-            <div class="col-md-10"> <!-- Augmenter cette valeur pour plus de largeur -->
+            <div class="col-md-10">
                 <div class="card login-form-card">
                     <div class="card-header card-header-danger text-center">
-                        <!-- Ajout du logo de la société -->
                         <img src="/assets/img/deenim.png" alt="Logo de la société" style="width: 150px; height: auto; margin-bottom: 10px;">
                         <h4 class="card-title">Login</h4>
                         <p class="card-category">Connectez-vous !</p>
                     </div>
                     <div class="card-body">
-                        <form name="form"
-                              #f="ngForm"
-                              novalidate>
+                        <!-- Bloc d'erreur -->
+                        <div *ngIf="isLoginFailed" class="alert alert-danger text-center" role="alert">
+                            {{ 'Erreur de connexion. Veuillez réessayer.' }}
+                        </div>
+
+                        <form name="form" #f="ngForm" novalidate>
                             <div class="row">
                                 <div class="col-md-12">
                                     <mat-form-field class="example-full-width login-form-field">
@@ -20,7 +22,9 @@
                                                name="username"
                                                [(ngModel)]="form.username"
                                                required
-                                               #username="ngModel" type="username" class="form-control" placeholder="email" >
+                                               #username="ngModel"
+                                               type="text"
+                                               placeholder="Email" >
                                     </mat-form-field>
                                 </div>
                             </div>
@@ -33,7 +37,8 @@
                                                [(ngModel)]="form.password"
                                                required
                                                minlength="6"
-                                               #password="ngModel" class="form-control">
+                                               #password="ngModel"
+                                               placeholder="Mot de passe">
                                     </mat-form-field>
                                 </div>
                             </div>
@@ -42,12 +47,12 @@
                         </form>
                         <div class="row mt-3">
                             <div class="col-md-12 text-center">
-                                <p>Vous n'avez pas de compte? <a href="register" class="text-danger">Inscrivez-vous</a></p>
+                                <p>Vous n'avez pas de compte? </p>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12 text-center">
-                                <button mat-raised-button type="button" (click)="onSignup()" class="btn btn-primary">S'inscrire</button>
+                                <button mat-raised-button type="button" (click)="onSignup()" class="btn btn-primary">Inscrivez-vous</button>
                             </div>
                         </div>
                     </div>

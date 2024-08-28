@@ -37,8 +37,9 @@ export class LoginComponent {
           
              this.route.navigate(['acceuil']);
             },
-        err => {
-          this.errorMessage = err.error.message;
+       
+          err => { 
+            this.errorMessage = 'Erreur de connexion. Veuillez réessayer.';
           this.isLoginFailed = true;
         }
     );
