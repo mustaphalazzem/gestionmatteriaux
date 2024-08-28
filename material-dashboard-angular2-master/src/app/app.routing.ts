@@ -11,8 +11,8 @@ import { AuthGuardLoggedOut } from './auth/AuthGuardLoggedOut';
 
 const routes: Routes = [
   { path: '', redirectTo: 'acceuil', pathMatch: 'full' },
-  { path: 'login', component: LoginComponent, canActivate: [AuthGuardLoggedOut] },
-  { path: 'register', component: RegisterComponent, canActivate: [AuthGuardLoggedOut] },
+  { path: 'login', component: LoginComponent/*, canActivate: [AuthGuardLoggedOut]*/ },
+  { path: 'register', component: RegisterComponent/*, canActivate: [AuthGuardLoggedOut]*/ },
   {
     path: '',
     component: AdminLayoutComponent,
@@ -24,7 +24,7 @@ const routes: Routes = [
     ],
     canActivate: [AuthGuardLoggedIn]
   },
-  { path: '**', redirectTo: 'acceuil' } // Fallback route for undefined paths
+//  { path: '**', redirectTo: 'acceuil' } // Fallback route for undefined paths
 ];
 
 @NgModule({
