@@ -7,16 +7,24 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import {LoginComponent} from "./login/login.component";
 import {RegisterComponent} from "./register/register.component";
 import { AuthGuardLoggedIn } from './auth/auth.guard';
+import { AuthGuardLoggedOut } from './auth/AuthGuardLoggedOut';
 
-const routes: Routes =[
+const routes: Routes = [
+  { path: '', redirectTo: 'acceuil', pathMatch: 'full' },
+  { path: 'login', component: LoginComponent, canActivate: [AuthGuardLoggedOut] },
+  { path: 'register', component: RegisterComponent, canActivate: [AuthGuardLoggedOut] },
   {
-    path: '', redirectTo: 'acceuil', pathMatch: 'full'},
-  {path: 'login', component:LoginComponent},  {path: 'register', component:RegisterComponent},
-  {path: '', component: AdminLayoutComponent, children: [{
-      path: '',
-      loadChildren: () => import('./layouts/admin-layout/admin-layout.module').then(m => m.AdminLayoutModule)
-    }]  ,canActivate:[AuthGuardLoggedIn]
-  }
+    path: '',
+    component: AdminLayoutComponent,
+    children: [
+      {
+        path: '',
+        loadChildren: () => import('./layouts/admin-layout/admin-layout.module').then(m => m.AdminLayoutModule)
+      }
+    ],
+    canActivate: [AuthGuardLoggedIn]
+  },
+  { path: '**', redirectTo: 'acceuil' } // Fallback route for undefined paths
 ];
 
 @NgModule({

@@ -17,9 +17,13 @@ export class TokenStorageService {
     window.localStorage.removeItem(TOKEN_KEY);
     window.localStorage.setItem(TOKEN_KEY, jwtToken);
   }
-  public getToken(): string {
-    // @ts-ignore
-    return localStorage.getItem(TOKEN_KEY);
+  public getToken(): string | null {
+    const userData = localStorage.getItem(USER_KEY);
+    if (userData) {
+      const parsedData = JSON.parse(userData);
+      return parsedData.accessToken;
+    }
+    return null;
   }
   public saveUser(user:USER) {
     window.localStorage.removeItem(USER_KEY);

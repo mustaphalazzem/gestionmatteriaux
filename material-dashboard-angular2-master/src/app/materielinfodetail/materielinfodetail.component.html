@@ -4,48 +4,50 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header card-header-danger">
-                        <h4 class="card-title">Detail de matieriel informatique</h4>
-
+                        <h4 class="card-title">Détail de Matériel Informatique</h4>
                     </div>
                     <div class="card-body">
                         <form>
-                            <div class="row">
-
-                            </div>
-
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="example-full-width">
-                                        <h5 class="card-title">code</h5>
-                                        <p class="card-text">{{maison.code}}</p>
-                                    </div>
+                            <!-- Code -->
+                            <div class="row mb-3">
+                                <div class="col-md-3">
+                                    <h5 class="card-title">Code</h5>
+                                </div>
+                                <div class="col-md-9">
+                                    <p class="card-text">{{ maison.code }}</p>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="example-full-width">
-                                        <h5 class="card-title">model</h5>
-                                        <p class="card-text">{{maison.model}}</p>
-                                    </div>
-                                </div>
-                                </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="example-full-width">
-                                        <h5 class="card-title">type d'achat</h5>
-                                        <p class="card-text">{{maison.typeMateriel.type || "N/A"}}</p>
-                                    </div>
-                                </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="example-full-width">
-                                            <h5 class="card-title">situation</h5>
-                                            <p class="card-text">{{maison.situation.situation|| "N/A" }}</p>
-                                        </div>
-                                    </div>
-                                </div>
 
+                            <!-- Modèle -->
+                            <div class="row mb-3">
+                                <div class="col-md-3">
+                                    <h5 class="card-title">Modèle</h5>
+                                </div>
+                                <div class="col-md-9">
+                                    <p class="card-text">{{ maison.model }}</p>
+                                </div>
+                            </div>
+
+                            <!-- Type d'achat -->
+                            <div class="row mb-3">
+                                <div class="col-md-3">
+                                    <h5 class="card-title">Type de Matériel</h5>
+                                </div>
+                                <div class="col-md-9">
+                                    <p class="card-text">{{ maison.typeMateriel?.type || "N/A" }}</p>
+                                </div>
+                            </div>
+
+                            <!-- Situation -->
+                            <div class="row mb-3">
+                                <div class="col-md-3">
+                                    <h5 class="card-title">Situation</h5>
+                                </div>
+                                <div class="col-md-9">
+                                    <p class="card-text">{{ maison.situation?.situation || "N/A" }}</p>
+                                </div>
+                            </div>
+                            
                         </form>
                     </div>
                 </div>

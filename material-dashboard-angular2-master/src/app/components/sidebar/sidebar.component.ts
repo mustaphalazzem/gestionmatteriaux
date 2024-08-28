@@ -17,9 +17,9 @@ export const ROUTES: RouteInfo[] = [
     { path: '/listef', title: 'Fourniture',  icon:'content_paste', class: '' },
     { path: '/listea', title: 'Forme achat',  icon:'library_books', class: '' },
     { path: '/listety', title: 'Types de materiaux',  icon:'bubble_chart', class: '' },
-    { path: '/listes', title: 'Situations',  icon:'location_on', class: '' },
-    { path: '/listemat', title: 'Materiaux informatiques',  icon:'notifications', class: '' },
-    //{ path: '/upgrade', title: 'Upgrade to PRO',  icon:'unarchive', class: 'active-pro' },
+    { path: '/listes', title: 'Situations',  icon:'bubble_chart', class: '' },
+    { path: '/listemat', title: 'Materiaux informatiques',  icon:'bubble_chart', class: '' },
+    { path: '/inventaire', title: 'Inventaire',  icon:'unarchive', class: '' },
 ];
 
 @Component({
